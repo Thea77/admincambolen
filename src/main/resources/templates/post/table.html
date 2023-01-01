@@ -1,0 +1,93 @@
+<style>
+     .pagination .page-item:first-child .page-link, .pagination .page-item:last-child .page-link{
+        height: 100%;
+     }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+             <div style="background-color: #078067e5;" class=" mt-0 mb-3 py-4">
+        <h2 class="pt-4 text-white text-center">Post management</h2>
+    </div>
+        </div>
+    </div>
+   
+    <div class="row mt-2">
+        <div class="col-12 ">
+            <nav class="px-4 mb-1">
+                <ul class="pagination justify-content-start pagination-sm">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card-body pt-1">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;" scope="col">ID</th>
+                            <th style="width: 20%;" scope="col">Title</th>
+                            <th style="width: 30%;" scope="col">Description</th>
+                            <th style="width: 20%;" scope="col">Icon</th>
+                            <th style="width: 10%;" scope="col">Author</th>
+                            <th style="width: 10%;" scope="col">Categories</th>
+                            <th style="width: 10%;" scope="col">Publish</th>
+                            <th style="width: 15%;" scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item: ${response.data.list}">
+                            <td>1</td>
+                            <td th:text="${item.title}"></td>
+                            <td th:text="${item.description}"></td>
+                            <td>
+                                <img width="70%" th:src="${item.photo.uri}" alt="image">
+                            </td>
+                            <td th:text="${item.author.username}"></td>
+                            <td>
+                                <ul th:each="cate: ${item.categories}">
+                                    <li class="pb-2" th:text="${cate.name}"></li>
+                                </ul>
+
+                            </td>
+
+                            <td th:text="${item.datePublished}"></td>
+                            <td>
+                                <button class="btn-sm" style="border:1px solid rgb(230, 230, 230) ;">
+                                    <a th:href="@{'/post-edit/'+ ${item.id}}">
+                                        <i class="material-icons text-warning" style="font-size:15px">edit</i>
+                                    </a>
+                                </button>
+                                <button th:data-id="${item.id}" class="btn-sm btn-delete"
+                                    style="border:1px solid rgb(230, 230, 230);" data-toggle="modal"
+                                    data-target="#btnDelete">
+                                    <i class="material-icons text-danger" style="font-size:15px">delete</i>
+                                </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+
+        </div>
+    </div>
+   
+</div>
+<th:block layout:fragment="scripts">
+    <script src="/scripts/post/modalDelete.js"></script>
+</th:block>

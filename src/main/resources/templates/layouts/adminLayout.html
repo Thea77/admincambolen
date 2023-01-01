@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    >
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="description"
+        content="Sleek Dashboard"> -->
+
+    <title>Admin Dashboard</title>
+    <!--css start-->
+    <th:block th:include="~{fragments/styles}"></th:block>
+    <!-- end css -->
+
+</head>
+
+
+<body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+
+    <script>
+        NProgress.configure({ showSpinner: false });
+        NProgress.start();
+    </script>
+
+
+
+    <div class="wrapper">
+
+        <!-- aside start -->
+        <div th:replace="~{fragments/aside}"></div>
+        <!-- end aside -->
+
+
+        <div class="page-wrapper">
+            <!-- Header start -->
+            <div th:replace="~{fragments/header}"></div>
+            <!-- Header end -->
+
+            <div class="content-wrapper">
+                <div class="content">
+                    <!-- content start -->
+                    <div layout:fragment="content"></div>
+                    <!-- end content -->
+                </div>
+
+                <!-- right-sidebar start -->
+                <div th:replace="~{fragments/right-sidebar}"></div>
+                <!-- right-sidebar end -->
+
+            </div>
+            <!-- footer start -->
+            <div th:replace="~{fragments/footer}"></div>
+            <!-- footer end -->
+
+        </div>
+    </div>
+    <!--Script start-->
+    <th:block th:include="~{fragments/script}"></th:block>
+    <!-- end Script -->
+
+</body>
+
+</html>
