@@ -1,13 +1,12 @@
-
-    const loadPostTable = (callback) => {
-    fetch('/tmpl/post/table', {
+    const loadPostTable = (pageNum, callback) => {
+    fetch(`/post/tmpl/data?pageNum=${pageNum}`, {
         method: "GET"
     })
     .then(response => response.text())
-    .then(response =>{
-        // console.log("data"+response)
+    .then(text =>{
+        // console.log("data"+text)
         if(typeof callback == 'function'){
-            callback(response)
+            callback(text)
         }
     })
 }

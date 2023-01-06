@@ -6,6 +6,6 @@ import co.istad.admincambolen.features.model.ApiResponse;
 
 public interface AuthService {
 
-    ApiResponse<?> login(String username, String password) throws JsonProcessingException;    
+    ApiResponse<?> loginUser(String username, String password) throws JsonProcessingException;    
 
 }

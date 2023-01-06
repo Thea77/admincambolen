@@ -1,32 +1,26 @@
-package co.istad.admincambolen.features.user;
+package co.istad.admincambolen.features.user.web;
 
 import java.util.List;
 
-import co.istad.admincambolen.features.file.model.File;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @ToString
-public class User {
-    private Long id;
+public class CreateUserDto {
     private String username;
     private String email;
     private String password;
+    private String confirmedPassword;
     private String familyName;
     private String givenName;
     private String phoneNumber;
-    private File profile;
-    private Boolean isEnabled;
-    private String verificationCode;
-    private List<Role> roles;
-    private String resetToken;
-    private String token;
+    private Long profileId;
+    private List<Integer> roleIds;
 }

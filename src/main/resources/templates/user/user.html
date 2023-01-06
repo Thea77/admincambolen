@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/adminLayout}">
+
+<head>
+    <title>User</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+</head>
+
+<body>
+   
+    <div layout:fragment="content">
+
+       
+        <div th:replace="~{user/data}">
+
+        </div>
+    
+
+    </div>
+
+    <th:block layout:fragment="scripts">
+         <!-- <script src=" https://code.jquery.com/jquery-3.5.1.js"></script> -->
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    </th:block>
+   
+  
+
+</body>
+
+
+</html>
+<script>
+    $(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>

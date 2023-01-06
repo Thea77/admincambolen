@@ -20,9 +20,25 @@ public class WebClientUtils {
 
     private final WebClient webClient;
 
-    public <T> ApiResponse<T> login(String endPoint, LoginDto loginDto) throws JsonProcessingException {
+    public ApiResponse<LoginResponse> login(String endPoint, LoginDto loginDto) throws JsonProcessingException {
         ObjectMapper om = new ObjectMapper();
         String jsoString = om.writeValueAsString(loginDto);
+
+        return webClient.post()
+                .uri(endPoint)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(jsoString))
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<ApiResponse<LoginResponse>>() {
+                    
+                })
+                .block();
+    }
+
+    public <T> ApiResponse<T> insert(String endPoint, T body ) throws JsonProcessingException {
+        String jsoString = "";
+        ObjectMapper om = new ObjectMapper();
+        jsoString = om.writeValueAsString(body);
 
         return webClient.post()
                 .uri(endPoint)
@@ -34,6 +50,8 @@ public class WebClientUtils {
                 })
                 .block();
     }
+
+    
 
     public <T> ApiResponse<Pagination<T>> fetch(Long pageNum, String endPoint) {
         return webClient.get()
@@ -47,6 +65,13 @@ public class WebClientUtils {
                 }).block();
     }
 
+    public <T> ApiResponse<T> fetchNoPagination(String endPoint) {
+        return webClient.get()
+    .uri(endPoint)
+            .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
+                }).block();
+    }
     public <T> ApiResponse<T> fetchById(String endPoint, Long id) {
         return webClient.get()
             .uri(endPoint + "/" + id)
@@ -59,14 +84,23 @@ public class WebClientUtils {
     public ApiResponse<User> getUserForAuthentication(String usernameOrEmail) {
         return webClient.get()
             .uri(builder 
-                -> builder.path("users/find-by-usernameoremail")
+                -> builder.path("/users/find-by-usernameoremail")
             .queryParam("usernameOrEmail", usernameOrEmail)
             .build())
             .retrieve()
             .bodyToMono(new ParameterizedTypeReference<ApiResponse<User>>() {
             }).block();
+        }
+
+
+    public <T> ApiResponse<T> delete(String endPoint, Long id) {
+        return webClient.delete()
+            .uri(endPoint + "/" + id)
+            .retrieve()
+            .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
+            }).block();
+
+           
     }
-
-
 
 }

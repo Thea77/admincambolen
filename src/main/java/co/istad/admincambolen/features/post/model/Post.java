@@ -3,6 +3,7 @@ package co.istad.admincambolen.features.post.model;
 import java.util.Date;
 import java.util.List;
 
+import co.istad.admincambolen.features.file.model.File;
 import co.istad.admincambolen.features.user.User;
 import lombok.Data;
 

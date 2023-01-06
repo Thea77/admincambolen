@@ -2,25 +2,30 @@
 <!-- <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/adminLayout}"> -->
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/adminLayout}">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- GOOGLE FONTS -->
+      
+  <!-- SLEEK CSS -->
+  <link rel="stylesheet" href="/assets/css/sleek.css" />
+  <!-- <link id="sleek-css" rel="stylesheet" href="assets/css/sleek.css" /> -->
+ 
     <title>Admin Login</title>
 </head>
 
-<body>
-    <div layout:fragment="content">
-
+<body style="background-color: rgb(170, 170, 170);">
+    <div >
         <section class="volunteer-section section-padding" id="section_4">
-            <div class="container">
+            <div class="container mt-5">
                 <div class="row justify-content-center">
 
-                    <div class="col-xl-7 col-lg-8 col-md-8 col-md-10 col-12 p-5 "
-                        style="text-align: center;background-color: rgb(255, 255, 255); border-radius: 10px;">
+                    <div class="col-xl-6 col-lg-8 col-md-8 col-md-10 col-12 p-5 "
+                        style="text-align: center;background-color: rgb(255, 255, 255); border-radius: 4px;">
                         <h4 class="mb-4" >Welcome To Cambolens Dashboard</h4>
 
                         <form class="custom-form volunteer-form mb-lg-0" th:action="@{/login}" method="post"
@@ -63,5 +68,5 @@
         </section>
     </div>
 </body>
-
+<script src="/assets/plugins/jquery/jquery.min.js"></script>
 </html>

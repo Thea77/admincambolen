@@ -28,7 +28,10 @@ public class AuthController {
     String doLogin(@RequestParam("username") String username,
                     @RequestParam("password") String password) throws JsonProcessingException{
         
-        authServiceImpl.login(username, password);
+      ApiResponse<?> response = authServiceImpl.loginUser(username, password);
+       
+        log.info("controllerRes= {}",response);
+
         return "redirect:/";
     }
 

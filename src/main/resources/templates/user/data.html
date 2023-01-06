@@ -1,0 +1,62 @@
+<style>
+    #example_paginate>.pagination>li>a{
+        padding: 4px 10px;
+    }
+    .pagination .page-item:first-child .page-link, .pagination .page-item:last-child .page-link {
+        height: auto;
+    }
+</style>
+<div class="row bg-white" xmlns:th="http://www.thymeleaf.org">
+    <div class="col-12">
+        <div class="py-4 mb-3 bg-white card-header card-header-border-bottom d-flex justify-content-start">
+            <h4>User Managment</h4>
+        </div>           
+
+        <table id="example" class="table table-striped" style="width:100%"
+            th:if="${not#lists.isEmpty(data.data.list)}">
+            <thead>
+                <tr>
+                    <th width="5%">ID</th>
+                    <th width="10%">UserName</th>
+                    <th width="15%">Profile</th>
+                    <th width="15%">Email</th>
+                    <th width="15%">PhoneNumber</th>
+                    <th width="10%">Role</th>
+                    <th width="8%">Status</th>
+                    <th width="15%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr th:each="item: ${data.data.list}" class="text-dark">
+                    <td>1</td>
+                    <td th:text="${item.username}"></td>
+                    <td><img th:src="${item.profile.uri}" width="70%"></td>
+                    <td th:text="${item.email}"></td>
+                    <td th:text="${item.phoneNumber}"></td>
+                    <td>
+                        <ul th:each="role: ${item.roles}">
+                            <li class="pb-2" th:text="${role.name}"></li>
+                        </ul>
+                    </td>
+                    <td style="text-align: center;">
+                        <span th:text="${item.isEnabled} ? 'active' : 'disabled' "> </span>
+                    </td>
+                    <td>
+                        <button class="btn-sm" style="border:1px solid rgb(230, 230, 230);background-color: #4c84ff;">
+                            <a th:href="@{'/users-edit/'+ ${item.id}}">
+                                <i class="material-icons text-warning" style="font-size:15px">edit</i>
+                            </a>
+                        </button>
+                        <button th:data-id="${item.id}" class="btn-sm"
+                            style="border:1px solid rgb(230, 230, 230);background-color: #4c84ff" 
+                            data-toggle="modal" data-target="#btnDelete">
+                            <i class="material-icons text-danger" style="font-size:15px">delete</i>
+                        </button>
+                    </td>
+                </tr>
+
+                </tfoot>
+        </table>
+    </div>
+</div>

@@ -6,7 +6,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import co.istad.admincambolen.config.security.CustomUserSecurity;
 import co.istad.admincambolen.features.model.ApiResponse;
 import co.istad.admincambolen.features.user.User;
 import co.istad.admincambolen.utils.WebClientUtils;
@@ -22,22 +24,31 @@ public class AuthServiceImpl implements AuthService {
     private final DaoAuthenticationProvider daoAuthenticationProvider;
 
     @Override
-    public ApiResponse<?> login(String username, String password) throws JsonProcessingException {
+    public ApiResponse<?> loginUser(String username, String password) throws JsonProcessingException {
+        
         LoginDto loginDto = new LoginDto();
         loginDto.setUsername(username);
         loginDto.setPassword(password);
 
-        // System.out.println("bodyLogin="+ loginDto);
+        System.out.println("bodyLogin="+ loginDto);
         //get User data
-        ApiResponse<LoginResponse> response = webClientUtils.login("auth/login", loginDto);
+        ApiResponse<LoginResponse> response = webClientUtils.login("/auth/login", loginDto);
         System.out.println("Res="+ response);
 
         LoginResponse userResponse = response.getData();
+        // System.out.println("Res2="+ userResponse);
 
-        Authentication authentication = daoAuthenticationProvider.authenticate(
-            new UsernamePasswordAuthenticationToken(userResponse.getUser().getUsername(), loginDto));
-
-      log.info("Aut={}",authentication);
+        userResponse.setToken(response.getData().getToken());
+       
+        User user = userResponse.getUser();
+        user.setToken(userResponse.getToken());
+        System.out.println("User="+ user);
+        
+        Authentication auth = daoAuthenticationProvider.authenticate(
+            new UsernamePasswordAuthenticationToken(user.getUsername(), password));
+        CustomUserSecurity customUserSecurity = (CustomUserSecurity) auth.getPrincipal();
+        customUserSecurity.getUser().setToken(user.getToken());
+      log.info("Aut={}",customUserSecurity.getUser().getToken());
       
         return response;
     }

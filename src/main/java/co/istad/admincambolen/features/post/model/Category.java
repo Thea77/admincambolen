@@ -1,5 +1,6 @@
 package co.istad.admincambolen.features.post.model;
 
+import co.istad.admincambolen.features.file.model.File;
 import lombok.Data;
 
 @Data

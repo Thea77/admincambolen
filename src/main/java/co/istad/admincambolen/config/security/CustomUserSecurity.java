@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import co.istad.admincambolen.features.model.ApiResponse;
 import co.istad.admincambolen.features.user.User;
 import lombok.Data;
 

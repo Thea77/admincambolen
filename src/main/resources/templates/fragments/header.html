@@ -78,13 +78,50 @@
                     <i class="mdi mdi-settings mdi-spin"></i>
                 </li>
                 <!-- User Account -->
-                <li class="user-menu btn-log ">
+               
+                <li class="dropdown user-menu" sec:authorize="isAuthenticated()" >
+                    <button  href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+                      <span sec:authentication="name" class="d-none d-lg-inline-block">UserName</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <!-- User image -->
+                      <li>
+                        <a href="user-profile.html">
+                          <i class="mdi mdi-account"></i> My Profile
+                        </a>
+                      </li>
+                      <!-- <li>
+                        <a href="#">
+                          <i class="mdi mdi-email"></i> Message
+                        </a>
+                      </li> -->
+                      <!-- <li>
+                        <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
+                      </li> -->
+                      <!-- <li class="right-sidebar-in">
+                        <a href="javascript:0"> <i class="mdi mdi-settings"></i> Setting </a>
+                      </li> -->
+
+                      <li class="dropdown-footer">
+                        <a sec:authorize="isAnonymous()" class="nav-link log" th:href="@{/Login}">
+                            <i class="mdi mdi-logout"></i> 
+                            Login
+                        </a>
+                        <a sec:authorize="isAuthenticated()" class="nav-link log" th:href="@{/logout}"> 
+                            <i class="mdi mdi-logout"></i>
+                            Logout
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                <!-- <li class="user-menu btn-log ">
                     <a sec:authorize="isAnonymous()" class="nav-link log" th:href="@{/Login}">Login</a>
                     <a sec:authorize="isAuthenticated()" class="nav-link log" th:href="@{/logout}">Logout</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
 
+   
 
 </header>

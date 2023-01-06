@@ -3,8 +3,13 @@ var spin = '<button class="btn btn-outline-danger" type="button" disabled>'+
             ' Loading...</button>'
 
 $(function(){
-    $('#table>#spinner').html(spin)
-    loadPostTable(function(response){
-        $('#table').html(response)
+    $('#table').html(`
+    <div class="text-center">
+        ${spin}
+    </div>
+    `)
+
+    loadPostTable(1, function(text){
+        $('#table').replaceWith(text)
     })
 })

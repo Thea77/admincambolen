@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/adminLayout}">
+
+<head>
+    <title>User</title>
+    <link rel="stylesheet" href="/assets/css/file-upload.css">
+</head>
+
+<style>
+    #multiplefileupload{
+        display: none;
+    }
+    .upload-area button{
+        display: none !important;
+    }
+
+</style>
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card card-default">
+                        <div class="card-header card-header-border-bottom" style="background-color: #4c84ff;">
+                            <h2 class="text-light">CREATE USER</h2>
+                        </div>
+                        <div class="card-body" style="background-color: #e4ecf5c5; border: 1px solid #b5ccff;">
+                            <form th:action="@{/users-create}" method="post" th:object="${userDto}">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="userNameInput">User Name</label>
+                                            <input th:field="*{username}" required type="text" class="form-control" id="userNameInput"
+                                                placeholder="Enter UserName">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="familyNameInput">Family Name</label>
+                                            <input th:field="*{familyName}" type="text" class="form-control" id="familyNameInput"
+                                                placeholder="Enter FamilyName">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="givenNameInput">Given Name</label>
+                                            <input  th:field="*{givenName}" type="text" class="form-control" id="givenNameInput"
+                                                placeholder="Enter GivenName">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="emailInput">Email address</label>
+                                            <input th:field="*{email}" required type="email" class="form-control" id="emailInput" placeholder="Enter Email">
+                                            <span class="mt-2 d-block">We'll never share your email with anyone else.</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="passwordInput">Password</label>
+                                            <input th:field="*{password}" required type="password" class="form-control" id="passwordInput"
+                                                placeholder="********">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="confirmPasswordInput">Confirme Password</label>
+                                            <input th:field="*{confirmedPassword}" required type="password" class="form-control" id="confirmPasswordInput"
+                                                placeholder="********">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="phoneNumInput">Phone Number</label>
+                                            <input th:field="*{phoneNumber}" type="text" class="form-control" id="phoneNumInput"
+                                                placeholder="+855*********">
+                                        </div>
+                                    </div> 
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="rolesSelect">Roles:</label>
+                                            <div class="form-check" id="rolesSelect">
+                                                <input th:field="*{roleIds}" checked class="form-check-input" type="checkbox" value="1" id="adminCheck">
+                                                <label style="font-size: 14px;" class="form-check-label" for="adminCheck">
+                                                   ADMIN
+                                                </label>
+                                                
+                                            </div>
+                                            <div class="form-check">
+                                                <input th:field="*{roleIds}" class="form-check-input" type="checkbox" value="2" id="editorCheck">
+                                                <label style="font-size: 14px;" class="form-check-label" for="editorCheck">
+                                                    EDITOR
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                              
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-10">
+                                        <h5 class="mb-2">Upload Profile:</h5>
+                                           <section class="bg-diffrent">
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col-12">
+                                                    <div class="file-upload-contain">
+                                                        <input hidden 
+                                                            id="multiplefileupload" 
+                                                            type="file" 
+                                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" multiple />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    </div>
+                                 
+                                </div>
+
+                               
+                                <div class="form-footer pt-4 pt-5 mt-4 border-top">
+                                    <button type="submit" class="btn btn-primary btn-default">Submit</button>
+                                    <!-- <button type="submit" class="btn btn-secondary btn-default">Cancel</button> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <th:block layout:fragment="scripts">
+        <script src="/assets/js/file-upload.js"></script>
+    </th:block>
+
+
+
+</body>
+
+
+</html>

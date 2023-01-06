@@ -5,6 +5,7 @@ import java.util.List;
 import co.istad.admincambolen.features.user.Role;
 import co.istad.admincambolen.features.user.User;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @ToString
 public class LoginResponse {
 
