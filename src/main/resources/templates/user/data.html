@@ -5,14 +5,15 @@
     .pagination .page-item:first-child .page-link, .pagination .page-item:last-child .page-link {
         height: auto;
     }
+ 
 </style>
 <div class="row bg-white" xmlns:th="http://www.thymeleaf.org">
     <div class="col-12">
         <div class="py-4 mb-3 bg-white card-header card-header-border-bottom d-flex justify-content-start">
-            <h4>User Managment</h4>
+            <h3 style="font-weight: 600;">User Managment</h3>
         </div>           
 
-        <table id="example" class="table table-striped" style="width:100%"
+        <table id="example" class="table table-striped"
             th:if="${not#lists.isEmpty(data.data.list)}">
             <thead>
                 <tr>
@@ -40,15 +41,15 @@
                         </ul>
                     </td>
                     <td style="text-align: center;">
-                        <span th:text="${item.isEnabled} ? 'active' : 'disabled' "> </span>
+                        <p id="status" th:text="${item.isEnabled} ? 'active' : 'disabled' "> </p>
                     </td>
                     <td>
-                        <button class="btn-sm" style="border:1px solid rgb(230, 230, 230);background-color: #4c84ff;">
-                            <a th:href="@{'/users-edit/'+ ${item.id}}">
+                        <button th:data-id="${item.id}" th:data-status="${item.isEnabled}" class="btn-sm btn-update" 
+                            data-toggle="modal" data-target="#btnUpdate"
+                            style="border:1px solid rgb(230, 230, 230);background-color: #4c84ff;">
                                 <i class="material-icons text-warning" style="font-size:15px">edit</i>
-                            </a>
                         </button>
-                        <button th:data-id="${item.id}" class="btn-sm"
+                        <button th:data-id="${item.id}" class="btn-sm btn-delete"
                             style="border:1px solid rgb(230, 230, 230);background-color: #4c84ff" 
                             data-toggle="modal" data-target="#btnDelete">
                             <i class="material-icons text-danger" style="font-size:15px">delete</i>
@@ -60,3 +61,7 @@
         </table>
     </div>
 </div>
+
+<!-- <th:block layout:fragment="scripts"> -->
+
+<!-- </th:block> -->

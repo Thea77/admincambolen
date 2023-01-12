@@ -72,9 +72,18 @@ public class WebClientUtils {
                 .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
                 }).block();
     }
+
     public <T> ApiResponse<T> fetchById(String endPoint, Long id) {
         return webClient.get()
             .uri(endPoint + "/" + id)
+            .retrieve()
+            .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
+            }).block();
+    }
+
+    public <T> ApiResponse<T> getMe() {
+        return webClient.get()
+            .uri("/users/me")
             .retrieve()
             .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
             }).block();
@@ -99,7 +108,17 @@ public class WebClientUtils {
             .retrieve()
             .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
             }).block();
+           
+    }
 
+    public <T> ApiResponse<T> update(Long id,String endPoint, T body) {
+        
+        return webClient.put()
+            .uri("/users/"+id+"/"+ endPoint)
+            .bodyValue(body)
+            .retrieve()
+            .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
+            }).block();
            
     }
 

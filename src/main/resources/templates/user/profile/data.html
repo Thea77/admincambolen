@@ -1,0 +1,183 @@
+<div>
+    <div class="bg-white border rounded">
+        <div class="row no-gutters">
+            <div class="col-lg-4 col-xl-3">
+                <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
+                    <div class="card text-center widget-profile px-0 border-0">
+                        <div class="card-img mx-auto rounded-circle">
+                            <img th:src="${data.profile.uri}" alt="user image" width="100%">
+                        </div>
+                        <div class="card-body">
+                            <h4 th:text="${data.username}" class="py-2 text-dark"></h4>
+                            <p class="mb-2" style="font-size: 14px;" th:text="${data.email}"></p>
+                            <span>Roles:</span>
+                            <span th:each="role: ${data.roles}">
+                                (<span style="font-size: 12px;" class="text-success" th:text="${role.name}"></span>)
+                            </span>
+                            <!-- <a class="btn btn-primary btn-pill btn-lg my-4" href="#">Follow</a> -->
+                        </div>
+                    </div>
+
+                    <hr class="w-100">
+
+                </div>
+            </div>
+            <div class="col-lg-8 col-xl-9">
+                <div class="profile-content-right py-5">
+                    <ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myTab" role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                aria-controls="profile" aria-selected="true">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                                aria-controls="settings" aria-selected="false">Update Profile</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content px-3 px-xl-5" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel"
+                            aria-labelledby="profile-tab">
+                            <div class="mt-5">
+
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <!-- Detail Information -->
+                                        <div class="card card-default " data-scroll-height="550"
+                                            style="height: 550px; overflow: hidden;">
+                                            <div class="card-header justify-content-between  bg-light">
+                                                <div class="contact-info">
+                                                    <h5 class="text-dark mb-1">Information</h5>
+                                                    <hr class="w-100">
+
+                                                    <div class="media py-3 align-items-center justify-content-between">
+                                                        <div
+                                                            class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-info text-white">
+                                                            <i class="mdi mdi-message-plus font-size-20"></i>
+                                                        </div>
+                                                        <div class="media-body pr-3">
+                                                            <p class="mt-0 mb-1 font-size-15 text-dark">Given Name</p>
+                                                            <p th:text="${data.givenName}">name</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media py-3 align-items-center justify-content-between">
+                                                        <div
+                                                            class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
+                                                            <i class="mdi mdi-message-reply-text font-size-20"></i>
+                                                        </div>
+                                                        <div class="media-body pr-3">
+                                                            <p class="mt-0 mb-1 font-size-15 text-dark">Family Name</p>
+                                                            <p th:text="${data.familyName}">name</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="media py-3 align-items-center justify-content-between">
+                                                        <div
+                                                            class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-success text-white">
+                                                            <i class="mdi mdi-email font-size-20"></i>
+                                                        </div>
+                                                        <div class="media-body pr-3">
+                                                            <p class="mt-0 mb-1 font-size-15 text-dark">Email</p>
+                                                            <p th:text="${data.email}">email</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="media py-3 align-items-center justify-content-between">
+                                                        <div
+                                                            class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-secondary text-white">
+                                                            <i class="mdi mdi-cellphone-iphone font-size-20"></i>
+                                                        </div>
+                                                        <div class="media-body pr-3">
+                                                            <p class="mt-0 mb-1 font-size-15 text-dark">Phone Number</p>
+                                                            <p th:text="${data.phoneNumber}">tel</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <p class="text-dark font-weight-medium pt-4 mb-2">Social Profile</p>
+                                                    <p class="pb-3 social-button">
+                                                        <a href="#"
+                                                            class="mb-1 btn btn-outline btn-twitter rounded-circle">
+                                                            <i class="mdi mdi-twitter"></i>
+                                                        </a>
+                                                        <a href="#"
+                                                            class="mb-1 btn btn-outline btn-linkedin rounded-circle">
+                                                            <i class="mdi mdi-linkedin"></i>
+                                                        </a>
+                                                        <a href="#"
+                                                            class="mb-1 btn btn-outline btn-facebook rounded-circle">
+                                                            <i class="mdi mdi-facebook"></i>
+                                                        </a>
+                                                        <a href="#"
+                                                            class="mb-1 btn btn-outline btn-skype rounded-circle">
+                                                            <i class="mdi mdi-skype"></i>
+                                                        </a>
+                                                    </p>
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade show" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                            <div class="mt-5">
+                                <form >
+                                    <div class="form-group row mb-6" >
+                                        <label style="font-size: 15px !important;" for="coverImage" class="col-sm-4 col-lg-2 col-form-label">Profile</label>
+                                        <div class="col-sm-8 col-lg-10" >
+                                            <div class="custom-file mb-1">
+                                                <input type="file" class="custom-file-input" id="coverImage"
+                                                name="file"
+                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" multiple />
+                                                <label style="font-size: 13px;" class="custom-file-label" for="coverImage">Choose image...</label>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="firstName">familyName</label>
+                                                <input type="text" class="form-control" id="firstName" value="Albrecht">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="lastName">givenName</label>
+                                                <input type="text" class="form-control" id="lastName" value="Straub">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4 col-lg-6">
+                                            <label for="phoneNumInput">Phone Number</label>
+                                                <input type="text" class="form-control" id="phoneNumInput"
+                                                    placeholder="+855*********">
+                                        </div>
+    
+                                        <div class="form-group mb-4 col-lg-6">
+                                            <label for="emailInput">Email address</label>
+                                                <input  required type="email" class="form-control" id="emailInput" placeholder="Enter Email">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <button type="submit" class="btn btn-primary mb-2 btn-pill">Update
+                                            Profile</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="modal fade show" id="btnUpdate" tabindex="-1" role="dialog" aria-labelledby="btnUpdateLabel"
+    aria-modal="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="btnUpdateLabel">User's Status Updating!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/user-status}" method="post">
+                    <p>Your current status is (<span class="text-info" id="txtStatus"></span>)</p>
+
+                    <div class="form-check mt-3">
+                        <input id="statusId" type="text" th:name="id" hidden>
+                        <input th:value="true" class="form-check-input actTxt radio" type="radio" th:name="status"
+                            id="active">
+                        <label class="form-check-label " for="active">
+                            Active
+                        </label>
+                    </div>
+                    <div class="form-check mt-2">
+                        <input th:value="false" class="form-check-input radio disabledTxt" type="radio" th:name="status"
+                            id="disabled">
+                        <label class="form-check-label" for="disabled">
+                            Disabled
+                        </label>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+                <!-- <a id="confirmUpdate" th:href="@{/user-status}"> -->
+                    <button th:name="action" type="submit" class="btn btn-primary btn-pill">Update</button>
+                <!-- </a> -->
+            </div>
+            </form>
+
+            
+        </div>
+    </div>
+</div>
