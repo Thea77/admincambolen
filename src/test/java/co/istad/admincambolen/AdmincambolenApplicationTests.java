@@ -29,25 +29,10 @@ class AdmincambolenApplicationTests {
 	private WebClientConfig config;
 	private UserServiceImpl userServiceImpl;
 	@Test
-	void contextLoads()  throws IOException {
-		// System.out.println(impl.loginUser("sokunthea","#Thea2023"));
+	void contextLoads()  throws JsonProcessingException {
+		System.out.println(impl.loginUser("sokunthea","#Thea2023"));
 		// System.out.println(config);
-		// Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        // CustomUserSecurity customUserSecurity = (CustomUserSecurity) auth.getPrincipal();
-        // CustomUserSecurity customUserSecurity = (CustomUserSecurity) auth.getPrincipal();
-		// CreateUserDto dto = new CreateUserDto();
-		
-		// dto.setUsername("abc");
-		// dto.setEmail("abc@gmail.com");
-		// dto.setFamilyName("aaa");
-		// dto.setGivenName("bbb");
-		// dto.setPhoneNumber("152535263");
-		// dto.setProfileId(3L);
-		// // dto.setRoleIds(Arrays.asList(1,2));
-		// dto.setPassword("12345");
-		// dto.setConfirmedPassword("12345");
-
-        // System.out.println("myAuth="+ userServiceImpl.createUser(dto));
+	
 	
 	}
 

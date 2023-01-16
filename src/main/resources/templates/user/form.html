@@ -14,122 +14,150 @@
     /* .upload-area button{
         display: none !important;
     } */
-
 </style>
+
 <body>
     <div layout:fragment="content">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="card card-default">
-                        <div class="card-header card-header-border-bottom" style="background-color: #078067e5;">
-                            <h4 style="font-weight: 600;" class="text-light">CREATE USER</h4>
+                        <div class="card-header card-header-border-bottom" style="background-color: #62998d;">
+                            <h4 style="font-weight: 900;" class="text-light py-2">
+                                CREATE USER
+                            </h4>
                         </div>
-                        <div class="card-body" style="background-color: #ffffffc5; border: 1px solid #d4d6db;">
-                            <form th:action="@{/users-create}" method="post" th:object="${userDto}" enctype="multipart/form-data">
+                        <div class="card-body" style="border: 1px solid #d4d6db;">
+                            <form th:action="@{/users-create}" method="post" th:object="${userDto}"
+                                enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="userNameInput">User Name</label>
-                                            <input th:field="*{username}" required type="text" class="form-control" id="userNameInput"
-                                                placeholder="Enter UserName">
+                                            <label for="userNameInput">User Name
+                                                <i style="font-size: 10px;color: red;"
+                                                    class="mdi mdi-multiplication"></i>
+                                            </label>
+                                            <input th:field="*{username}" required type="text" class="form-control"
+                                                id="userNameInput" placeholder="Enter UserName">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="familyNameInput">Family Name</label>
-                                            <input th:field="*{familyName}" type="text" class="form-control" id="familyNameInput"
-                                                placeholder="Enter FamilyName">
+                                            <input th:field="*{familyName}" type="text" class="form-control"
+                                                id="familyNameInput" placeholder="Enter FamilyName">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="givenNameInput">Given Name</label>
-                                            <input  th:field="*{givenName}" type="text" class="form-control" id="givenNameInput"
-                                                placeholder="Enter GivenName">
+                                            <input th:field="*{givenName}" type="text" class="form-control"
+                                                id="givenNameInput" placeholder="Enter GivenName">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="emailInput">Email address</label>
-                                            <input th:field="*{email}" required type="email" class="form-control" id="emailInput" placeholder="Enter Email">
-                                            <span class="mt-2 d-block">We'll never share your email with anyone else.</span>
+                                            <label for="emailInput">Email address
+                                                <i style="font-size: 10px;color: red;"
+                                                    class="mdi mdi-multiplication"></i>
+                                            </label>
+                                            <input th:field="*{email}" required type="email" class="form-control"
+                                                id="emailInput" placeholder="Enter Email">
+                                            <span class="mt-2 d-block">We'll never share your email with anyone
+                                                else.
+                                            </span>
+                                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                                class="alert alert-danger"></p>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="passwordInput">Password</label>
-                                            <input th:field="*{password}" required type="password" class="form-control" id="passwordInput"
-                                                placeholder="********">
-                                                <span class="mt-2 d-block">Password must be 8 or more characters in length</span>
+                                            <label for="passwordInput">Password
+                                                <i style="font-size: 10px;color: red;"
+                                                    class="mdi mdi-multiplication"></i>
+                                            </label>
+                                            <input th:field="*{password}" required type="password" class="form-control"
+                                                id="passwordInput" placeholder="********">
+                                            <span class="mt-2 d-block">Password must be 8 or more characters in
+                                                length
+                                            </span>
+                                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                                class="alert alert-danger"></p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="confirmPasswordInput">Confirme Password</label>
-                                            <input th:field="*{confirmedPassword}" required type="password" class="form-control" id="confirmPasswordInput"
-                                                placeholder="********">
+                                            <label for="confirmPasswordInput">Confirme Password
+                                                <i style="font-size: 10px;color: red;"
+                                                    class="mdi mdi-multiplication"></i>
+                                            </label>
+                                            <input th:field="*{confirmedPassword}" required type="password"
+                                                class="form-control" id="confirmPasswordInput" placeholder="********">
                                         </div>
+                                        <p th:if="${#fields.hasErrors('confirmedPassword')}"
+                                            th:errors="*{confirmedPassword}" class="alert alert-danger"></p>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="phoneNumInput">Phone Number</label>
-                                            <input th:field="*{phoneNumber}" type="text" class="form-control" id="phoneNumInput"
-                                                placeholder="+855*********">
+                                            <input th:field="*{phoneNumber}" type="text" class="form-control"
+                                                id="phoneNumInput" placeholder="+855*********">
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="rolesSelect">Roles:</label>
                                             <div class="form-check" id="rolesSelect">
-                                                <input th:field="*{roleIds}" checked class="form-check-input" type="checkbox" value="1" id="adminCheck">
-                                                <label style="font-size: 14px;" class="form-check-label" for="adminCheck">
-                                                   ADMIN
+                                                <input th:field="*{roleIds}" class="form-check-input" type="checkbox"
+                                                    value="1" id="adminCheck">
+                                                <label style="font-size: 14px;" class="form-check-label"
+                                                    for="adminCheck">
+                                                    ADMIN
                                                 </label>
-                                                
+
                                             </div>
                                             <div class="form-check">
-                                                <input th:field="*{roleIds}" class="form-check-input" type="checkbox" value="2" id="editorCheck">
-                                                <label style="font-size: 14px;" class="form-check-label" for="editorCheck">
+                                                <input checked th:field="*{roleIds}" class="form-check-input"
+                                                    type="checkbox" value="2" id="editorCheck">
+                                                <label style="font-size: 14px;" class="form-check-label"
+                                                    for="editorCheck">
                                                     EDITOR
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
-                              
+
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="col-9">
-                                        <p class="mb-2">Upload Profile:</p>
-                                           <section class="bg-diffrent">
-                                        <div class="container">
-                                            <div class="row justify-content-center">
-                                                <div class="col-10">
-                                                    <div class="file-upload-contain">
-                                                        <input 
-                                                            hidden
-                                                            required
-                                                            name="file"
-                                                            id="multiplefileupload" 
-                                                            type="file" 
-                                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" multiple />
+                                        <p class="mb-2">Upload Profile:
+                                            <i style="font-size: 10px;color: red;" class="mdi mdi-multiplication"></i>
+                                        </p>
+                                        <section class="bg-diffrent">
+                                            <div class="container">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-12 col-lg-10 col-md-11">
+                                                        <div class="file-upload-contain">
+                                                            <input hidden required name="file" id="multiplefileupload"
+                                                                type="file"
+                                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                                                                multiple />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </section>
+                                        </section>
                                     </div>
-                                 
+
                                 </div>
 
-                               
+
                                 <div class="form-footer pt-2 border-top justify-content-center row">
-                                    <button style="width: 100%;background-color: #078067e5;font-weight: 700;font-size: 1rem;" 
-                                        type="submit" 
-                                        class="text-light py-3 btn btn-default">CREATE
+                                    <button style="width: 200px; background-color: #62998d;font-weight: 600;font-size: 20px;"
+                                        type="submit" class="text-light py-2 px-2 btn btn-default btn-pill">Create
                                     </button>
                                     <!-- <button type="submit" class="btn btn-secondary btn-default">Cancel</button> -->
                                 </div>

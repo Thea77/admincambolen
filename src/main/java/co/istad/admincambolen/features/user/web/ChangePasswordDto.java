@@ -1,7 +1,5 @@
 package co.istad.admincambolen.features.user.web;
 
-import java.util.List;
-
 import javax.validation.constraints.NotBlank;
 
 import co.istad.admincambolen.validation.password.Password;
@@ -17,22 +15,17 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-@PasswordMatch(password = "password", confirmedPassword = "confirmedPassword")
-public class CreateUserDto {
+@PasswordMatch(password = "newPassword", confirmedPassword = "confirmedPassword")
+public class ChangePasswordDto {
+    
     @NotBlank
-    private String username;
+    private String currentPassword;
     
-    private String email;
+    @Password
+    @NotBlank
+    private String newPassword;
 
     @Password
-    private String password;
-    
-    @Password
+    @NotBlank
     private String confirmedPassword;
-
-    private String familyName;
-    private String givenName;
-    private String phoneNumber;
-    private Long profileId;
-    private List<Integer> roleIds;
 }

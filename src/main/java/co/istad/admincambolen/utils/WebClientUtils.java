@@ -122,4 +122,15 @@ public class WebClientUtils {
            
     }
 
+    public <T> ApiResponse<T> updateUserprofile(String endPoint, T body) {
+        
+        return webClient.put()
+            .uri("/users/"+ endPoint)
+            .bodyValue(body)
+            .retrieve()
+            .bodyToMono(new ParameterizedTypeReference<ApiResponse<T>>() {
+            }).block();
+           
+    }
+
 }

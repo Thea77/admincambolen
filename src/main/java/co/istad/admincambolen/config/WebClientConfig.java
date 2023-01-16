@@ -27,7 +27,7 @@ public class WebClientConfig {
 
         return WebClient.builder()
             .baseUrl(apiBaseUrl)
-            .defaultHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzb2t1bnRoZWEiLCJleHAiOjE2NzM1MjI3MDksImlhdCI6MTY3MzUwNDcwOX0.yWAuC8R3wqm8Hfg3nht07hi8rTBsW12yKCcYBvXbgMcAvrIr-r_eHplC6ak2kIClCPvFaZ-UtgSTv4ppH9OMpA")
+            .defaultHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjczODY3ODM2LCJpYXQiOjE2NzM4NDk4MzZ9._ZC-HcWmtZ9gt5R9T1GuayzRlKMSVrxKKMUaNyZfhAVYCchctIW11Y5K_v5WQFZxh4oYxF1IMUY0Ifv1PbkkkQ")
             .build();
     }
   

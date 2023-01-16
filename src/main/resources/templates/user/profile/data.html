@@ -1,11 +1,76 @@
+<style th:inline="text">
+    label{
+        font-size: 13px !important;
+    }
+    .card-img {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .profile-pic {
+        background: url([[${data.profile.uri}]]) no-repeat;
+        /* background-size: 120px !important; */
+        background-size: cover !important;
+
+    }
+
+
+    .profile-pic {
+        object-fit: cover;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: multiply;
+        vertical-align: middle;
+        text-align: center;
+        color: transparent;
+        transition: all .3s ease;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .profile-pic:hover {
+        background-color: rgba(37, 37, 37, 0.37);
+        z-index: 10000;
+        color: #fff;
+        transition: all .3s ease;
+        text-decoration: none;
+    }
+
+    .profile-pic span {
+        display: inline-block;
+        padding-top: 4.5em;
+        padding-bottom: 4.5em;
+    }
+
+    form input[type="file"] {
+        display: none;
+        cursor: pointer;
+    }
+</style>
+
 <div>
     <div class="bg-white border rounded">
         <div class="row no-gutters">
             <div class="col-lg-4 col-xl-3">
                 <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
                     <div class="card text-center widget-profile px-0 border-0">
-                        <div class="card-img mx-auto rounded-circle">
-                            <img th:src="${data.profile.uri}" alt="user image" width="100%">
+                        <div class="card-img mx-auto">
+
+                            <form id="formchangeImage" th:action="@{/users-change-profile}" method="post" enctype="multipart/form-data">
+                                <label for="changeImage">
+                                    <div class="profile-pic">
+                                        <span class="glyphicon glyphicon-camera"></span>
+                                        <span>Change Image</span>
+                                    </div>
+                                </label>
+                                <input  type="file" id="changeImage" name="file"
+                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" multiple>
+                            </form>
+
+
                         </div>
                         <div class="card-body">
                             <h4 th:text="${data.username}" class="py-2 text-dark"></h4>
@@ -34,9 +99,9 @@
                             <a class="nav-link " id="settings-tab" data-toggle="tab" href="#settings" role="tab"
                                 aria-controls="settings" aria-selected="false">Update Profile</a>
                         </li>
+                      
                     </ul>
                     <div class="tab-content px-3 px-xl-5" id="myTabContent">
-
                         <div class="tab-pane fade show active" id="profile" role="tabpanel"
                             aria-labelledby="profile-tab">
                             <div class="mt-5">
@@ -117,6 +182,7 @@
 
 
                                                 </div>
+                                              
                                             </div>
 
                                         </div>
@@ -128,53 +194,43 @@
                         </div>
                         <div class="tab-pane fade show" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                             <div class="mt-5">
-                                <form >
-                                    <div class="form-group row mb-6" >
-                                        <label style="font-size: 15px !important;" for="coverImage" class="col-sm-4 col-lg-2 col-form-label">Profile</label>
-                                        <div class="col-sm-8 col-lg-10" >
-                                            <div class="custom-file mb-1">
-                                                <input type="file" class="custom-file-input" id="coverImage"
-                                                name="file"
-                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" multiple />
-                                                <label style="font-size: 13px;" class="custom-file-label" for="coverImage">Choose image...</label>
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
+                                <form th:action="@{/users-profile}" method="post" th:object="${userDto}">
                                     <div class="row mb-2">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="firstName">familyName</label>
-                                                <input type="text" class="form-control" id="firstName" value="Albrecht">
+                                                <input th:field="*{familyName}"  type="text" class="form-control" >
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="lastName">givenName</label>
-                                                <input type="text" class="form-control" id="lastName" value="Straub">
+                                                <input th:field="*{givenName}" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group mb-4 col-lg-6">
                                             <label for="phoneNumInput">Phone Number</label>
-                                                <input type="text" class="form-control" id="phoneNumInput"
-                                                    placeholder="+855*********">
+                                            <input th:field="*{phoneNumber}" type="text" class="form-control" id="phoneNumInput"
+                                                placeholder="+855*********">
                                         </div>
-    
+
                                         <div class="form-group mb-4 col-lg-6">
                                             <label for="emailInput">Email address</label>
-                                                <input  required type="email" class="form-control" id="emailInput" placeholder="Enter Email">
+                                            <input th:field="*{email}" required type="email" class="form-control" id="emailInput"
+                                                placeholder="example@gmail.com">
                                         </div>
                                     </div>
 
                                     <div class="d-flex justify-content-end mt-3">
-                                        <button type="submit" class="btn btn-primary mb-2 btn-pill">Update
-                                            Profile</button>
+                                        <button type="submit" class="btn btn-primary mb-2 btn-pill">
+                                            Update Profile</button>
                                     </div>
 
                                 </form>
                             </div>
                         </div>
+                      
                     </div>
                 </div>
             </div>
